@@ -11,6 +11,7 @@
 *{box-sizing:border-box;}
 body{margin:0;font-family:'Poppins',sans-serif;overflow:hidden;}
 
+/* SCREENS */
 .screen{
   position:fixed;width:100%;height:100%;
   display:flex;justify-content:center;align-items:center;
@@ -36,6 +37,7 @@ button:active{transform:scale(0.95);}
 
 #cardScreen{display:none;}
 
+/* BACKGROUND */
 #bg{
   position:fixed;width:100%;height:100%;z-index:-1;
 }
@@ -44,6 +46,7 @@ button:active{transform:scale(0.95);}
   border:2px dashed #ff1493;opacity:0.85;
 }
 
+/* CARD */
 .container{
   height:100vh;display:flex;justify-content:center;align-items:center;
 }
@@ -79,6 +82,7 @@ button:active{transform:scale(0.95);}
 h1{color:#d1006f;}
 p{color:#7a004d;}
 
+/* FINALE */
 #finale{
   position:fixed;width:100%;height:100%;
   background:radial-gradient(circle,#000,#1a001a);
@@ -92,12 +96,25 @@ p{color:#7a004d;}
   position:absolute;bottom:0;
 }
 
+/* FIXED TEXT */
 #finalText{
-  position:absolute;top:40%;
-  font-size:clamp(2rem,6vw,3.5rem);
-  text-align:center;opacity:0;
+  position:absolute;
+  top:40%;
+  width:90%;
+  left:50%;
+  transform:translateX(-50%);
+
+  font-size:clamp(1.5rem,5vw,3rem);
+  text-align:center;
+  opacity:0;
+
   font-family:'Orbitron',sans-serif;
-  letter-spacing:8px;color:#fff;
+  letter-spacing:3px;
+
+  white-space:pre-line;
+  word-wrap:break-word;
+
+  color:#fff;
   text-shadow:
     0 0 5px #ff4da6,
     0 0 10px #ff4da6,
@@ -106,7 +123,6 @@ p{color:#7a004d;}
     0 0 60px #ff69b4;
 }
 </style>
-
 </head>
 
 <body>
@@ -131,9 +147,9 @@ p{color:#7a004d;}
   <div class="card">
 
     <div class="page" data-index="0"><h1>💖 Tap to Start 💖</h1></div>
-    <div class="page" data-index="1"><p>Aise Janmadin tere har saal aaye (Aur badi party de har saal)...</p></div>
-    <div class="page" data-index="2"><p>Bhagwan kare mera aashirwaad tujhpe bana rahe...</p></div>
-    <div class="page" data-index="3"><p>Bhagwan kare teri umra lambi ho (hai hi) aur century maarna...</p></div>
+    <div class="page" data-index="1"><p>Aise Janmadin tere har saal aaye (aur har saal aur badi party de)...</p></div>
+    <div class="page" data-index="2"><p>Bhagwan ka aashirwaad tujhpe bana rahe...</p></div>
+    <div class="page" data-index="3"><p>Bhagwan kare teri umra lambi ho (hai hi) century maarna...</p></div>
     <div class="page" data-index="4"><h1>Lovee youuu darlingggg 🎉(ghop ghop ghop ghop)</h1></div>
 
   </div>
@@ -187,7 +203,7 @@ nextBtn.onclick=()=>{
   }
 };
 
-/* LOCAL IMAGES BACKGROUND */
+/* BACKGROUND IMAGES */
 function setBackground(){
   const bg=document.getElementById("bg");
   bg.innerHTML="";
@@ -208,9 +224,7 @@ function setBackground(){
 
   for(let i=0;i<20;i++){
     let img=document.createElement("img");
-
-    let randomImg = images[Math.floor(Math.random()*images.length)];
-    img.src = randomImg;
+    img.src=images[Math.floor(Math.random()*images.length)];
 
     img.className="bg-img";
     img.style.top=Math.random()*95+"%";
