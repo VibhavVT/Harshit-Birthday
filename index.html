@@ -11,7 +11,6 @@
 *{box-sizing:border-box;}
 body{margin:0;font-family:'Poppins',sans-serif;overflow:hidden;}
 
-/* SCREENS */
 .screen{
   position:fixed;width:100%;height:100%;
   display:flex;justify-content:center;align-items:center;
@@ -37,7 +36,6 @@ button:active{transform:scale(0.95);}
 
 #cardScreen{display:none;}
 
-/* BACKGROUND */
 #bg{
   position:fixed;width:100%;height:100%;z-index:-1;
 }
@@ -46,7 +44,6 @@ button:active{transform:scale(0.95);}
   border:2px dashed #ff1493;opacity:0.85;
 }
 
-/* CARD */
 .container{
   height:100vh;display:flex;justify-content:center;align-items:center;
 }
@@ -82,7 +79,6 @@ button:active{transform:scale(0.95);}
 h1{color:#d1006f;}
 p{color:#7a004d;}
 
-/* FINALE */
 #finale{
   position:fixed;width:100%;height:100%;
   background:radial-gradient(circle,#000,#1a001a);
@@ -96,24 +92,18 @@ p{color:#7a004d;}
   position:absolute;bottom:0;
 }
 
-/* FIXED TEXT */
 #finalText{
   position:absolute;
   top:40%;
   width:90%;
   left:50%;
   transform:translateX(-50%);
-
   font-size:clamp(1.5rem,5vw,3rem);
   text-align:center;
   opacity:0;
-
   font-family:'Orbitron',sans-serif;
   letter-spacing:3px;
-
-  white-space:pre-line;
   word-wrap:break-word;
-
   color:#fff;
   text-shadow:
     0 0 5px #ff4da6,
@@ -203,23 +193,16 @@ nextBtn.onclick=()=>{
   }
 };
 
-/* BACKGROUND IMAGES */
+/* BACKGROUND */
 function setBackground(){
   const bg=document.getElementById("bg");
   bg.innerHTML="";
 
   const images=[
-    "IMAGES/img1.jpg",
-    "IMAGES/img2.jpg",
-    "IMAGES/img3.jpg",
-    "IMAGES/img4.jpg",
-    "IMAGES/img5.jpg",
-    "IMAGES/img6.jpg",
-    "IMAGES/img7.jpg",
-    "IMAGES/img8.jpg",
-    "IMAGES/img9.jpg",
-    "IMAGES/img10.jpg",
-    "IMAGES/img11.jpg"
+    "IMAGES/img1.jpg","IMAGES/img2.jpg","IMAGES/img3.jpg",
+    "IMAGES/img4.jpg","IMAGES/img5.jpg","IMAGES/img6.jpg",
+    "IMAGES/img7.jpg","IMAGES/img8.jpg","IMAGES/img9.jpg",
+    "IMAGES/img10.jpg","IMAGES/img11.jpg"
   ];
 
   for(let i=0;i<20;i++){
@@ -296,18 +279,24 @@ function explode(){
   }
 }
 
+/* FIXED TEXT FUNCTION */
 function typeText(text){
-  finalText.innerText="";
   finalText.style.opacity=1;
-
+  finalText.innerHTML="";
   let i=0;
+
   let interval=setInterval(()=>{
-    finalText.innerText+=text[i];
-    i++;
-    if(i===text.length){
+    if(i<text.length){
+      if(text[i]==="\n"){
+        finalText.innerHTML+="<br>";
+      }else{
+        finalText.innerHTML+=text[i];
+      }
+      i++;
+    }else{
       clearInterval(interval);
     }
-  },70);
+  },50);
 }
 </script>
 
